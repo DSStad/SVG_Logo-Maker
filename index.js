@@ -1,18 +1,19 @@
-const { Shape, Circle, Square, Triangle } = require("./lib/shapes");
-const fs = require("fs");
+// const { Shape, Circle, Square, Triangle } = require("./lib/shapes");
+// const fs = require("fs");
 const inquirer = require("inquirer");
 
-buildSVG = () => {
-  return inquirer.prompt([
+// const buildSVG = () => {
+inquirer
+  .prompt([
     {
       type: "input",
       message:
-        "What text would you like in your logo(must be 3 characters or less)?",
+        "What text would you like in your logo? (must be 3 characters or less)",
       name: "text",
     },
     {
       type: "input",
-      message: "What color would you like for text to be in the logo?",
+      message: "What color would you like the text for the logo?",
       name: "textFill",
     },
     {
@@ -24,9 +25,14 @@ buildSVG = () => {
     },
     {
       type: "input",
-      message:
-        "What color would you like the shape to be filled with in the logo?",
+      message: "What color would you like the shape to be for the logo?",
       name: "fill",
     },
-  ]);
-};
+  ])
+  .then((answers) => {
+    const newLogo = answers;
+    console.log(newLogo);
+  });
+// };
+
+// buildSVG();
