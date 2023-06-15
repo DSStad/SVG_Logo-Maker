@@ -1,4 +1,5 @@
-const { Shape, Circle, Square, Triangle } = require("./lib/shapes");
+// const { Shape, Circle, Square, Triangle } = require("./lib/shapes");
+const shapes = require("./lib/shapes");
 const fs = require("fs");
 const inquirer = require("inquirer");
 const { squareCorners } = require("cli-spinners");
@@ -21,7 +22,8 @@ inquirer
       type: "list",
       name: "shape",
       message: "Please choose a shape for your logo?",
-      choices: ["Circle", "Triangle", "Square"],
+      choices: Object.keys(shapes),
+      //   choices: ["Circle", "Triangle", "Square"],
       default: "Circle",
     },
     {
@@ -31,24 +33,30 @@ inquirer
     },
   ])
   .then((answers) => {
-    const newLogo = answers;
-    console.log(newLogo);
-    const shape = newLogo.shape;
+    const shape = answers.shape;
     console.log(shape, typeof shape);
-    if (shape === "Triangle") {
-      const triLogo = new Triangle(
-        newLogo.fill,
-        newLogo.text,
-        newLogo.textFill
-      );
-      return triLogo;
-    } else if (shape === "Square") {
-      const sqrLogo = new Square(newLogo.fill, newLogo.text, newLogo.textFill);
-      return sqrLogo;
-    } else if (shape === "Circle") {
-      const circLogo = new Circle(newLogo.fill, newLogo.text, newLogo.textFill);
-      return circLogo;
-    }
+    //answers.shape OR answers['shape']
+    //shapes.shape shapes[shape]
+    const newLogo = new shapes[shape](
+      answers.fill,
+      answers.text,
+      answers.textFill
+    );
+    console.log(newLogo);
+    // if (shape === "Triangle") {
+    //   const triLogo = new Triangle(
+    //     newLogo.fill,
+    //     newLogo.text,
+    //     newLogo.textFill
+    //   );
+    //   return triLogo;
+    // } else if (shape === "Square") {
+    //   const sqrLogo = new Square(newLogo.fill, newLogo.text, newLogo.textFill);
+    //   return sqrLogo;
+    // } else if (shape === "Circle") {
+    //   const circLogo = new Circle(newLogo.fill, newLogo.text, newLogo.textFill);
+    //   return circLogo;
+    // }
   });
 //   .then(() => {
 //       fs.writeFile("./output/logo.svg", )
