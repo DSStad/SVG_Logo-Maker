@@ -1,6 +1,7 @@
-// const { Shape, Circle, Square, Triangle } = require("./lib/shapes");
-// const fs = require("fs");
+const { Shape, Circle, Square, Triangle } = require("./lib/shapes");
+const fs = require("fs");
 const inquirer = require("inquirer");
+const { squareCorners } = require("cli-spinners");
 
 // const buildSVG = () => {
 inquirer
@@ -32,7 +33,26 @@ inquirer
   .then((answers) => {
     const newLogo = answers;
     console.log(newLogo);
+    const shape = newLogo.shape;
+    console.log(shape, typeof shape);
+    if (shape === "Triangle") {
+      const triLogo = new Triangle(
+        newLogo.fill,
+        newLogo.text,
+        newLogo.textFill
+      );
+      return triLogo;
+    } else if (shape === "Square") {
+      const sqrLogo = new Square(newLogo.fill, newLogo.text, newLogo.textFill);
+      return sqrLogo;
+    } else if (shape === "Circle") {
+      const circLogo = new Circle(newLogo.fill, newLogo.text, newLogo.textFill);
+      return circLogo;
+    }
   });
+//   .then(() => {
+//       fs.writeFile("./output/logo.svg", )
+//   })
 // };
 
 // buildSVG();
