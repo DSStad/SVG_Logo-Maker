@@ -43,6 +43,13 @@ inquirer
       answers.textFill
     );
     console.log(newLogo);
+    fs.writeFile("./output/logo.svg", newLogo.render(), (err) => {
+      if (err) {
+        console.log("Error writing logo to file", err);
+      } else {
+        console.log("Generated logo.svg");
+      }
+    });
     // if (shape === "Triangle") {
     //   const triLogo = new Triangle(
     //     newLogo.fill,
