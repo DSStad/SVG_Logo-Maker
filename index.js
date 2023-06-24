@@ -50,24 +50,4 @@ inquirer
         console.log("Generated logo.svg");
       }
     });
-    // if (shape === "Triangle") {
-    //   const triLogo = new Triangle(
-    //     newLogo.fill,
-    //     newLogo.text,
-    //     newLogo.textFill
-    //   );
-    //   return triLogo;
-    // } else if (shape === "Square") {
-    //   const sqrLogo = new Square(newLogo.fill, newLogo.text, newLogo.textFill);
-    //   return sqrLogo;
-    // } else if (shape === "Circle") {
-    //   const circLogo = new Circle(newLogo.fill, newLogo.text, newLogo.textFill);
-    //   return circLogo;
-    // }
   });
-//   .then(() => {
-//       fs.writeFile("./output/logo.svg", )
-//   })
-// };
-
-// buildSVG();
